@@ -1,0 +1,23 @@
+
+<div class="row">
+    <div class="col-xs-6">
+        <div class="alert alert-danger" *ngIf="error">
+            <p>{{error}}</p>
+        </div>
+      <p *ngIf = "load">Loading...</p>
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)"  *ngIf="!load">
+            <div class="form-group">
+                <label for="e-mail">E-mail</label>
+                <input type="email" id="e-mail" placeholder="E-mail" class="form-control" ngModel name="email" required
+                    email>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="password" class="form-control" ngModel name="password"
+                    required minlength="6">
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="authForm.invalid">{{!toggleUser ? 'SignUp':'SIgnIn'}}</button> |
+            <button type="button" class="btn btn-primary" (click)="onChange()" >Switch To {{toggleUser ? 'SignUp':'SignIn'}}</button>
+        </form>
+    </div>
+</div>
